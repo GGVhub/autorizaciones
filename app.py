@@ -30,7 +30,6 @@ if "user_name" not in st.session_state:
 # ─── CSS ───────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    [data-testid="stSidebarNav"] { display: none; }
     .stButton>button { border-radius: 8px; font-weight: 600; }
 </style>
 """, unsafe_allow_html=True)
