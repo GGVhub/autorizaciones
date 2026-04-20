@@ -35,16 +35,12 @@ def require_page_access(page_slug: str):
 @st.cache_resource
 @st.cache_resource
 @st.cache_resource
+@st.cache_resource
 def get_connection():
-    """Conexión directa a Supabase sin secrets.toml."""
     try:
-        return st.connection(
-            "postgres",
-            type="sql",
-            url="postgresql://postgres:Verdolaga2%0R@db.wyoohiislykjhjglbqka.supabase.co:5432/postgres"
-        )
+        return st.connection("postgres", type="sql")
     except Exception as e:
-        st.error(f"❌ No se pudo conectar: {e}")
+        st.error(f"❌ No se pudo conectar a la base de datos: {e}")
         st.stop()
 
 def run_query(sql: str, params: tuple = None, fetch: bool = True):
