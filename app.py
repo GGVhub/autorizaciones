@@ -125,12 +125,30 @@ def show_sidebar():
         st.caption(f"Perfil {st.session_state.user_profile}")
         st.divider()
 
+        # Mapeo slug → URL de Streamlit Cloud
+        PAGE_URLS = {
+            "formulario":   "/01_carga_formulario",
+            "dashboard":    "/02_dashboard",
+            "autorizante1": "/03_autorizante1",
+            "autorizante2": "/04_autorizante2",
+        }
+
+        PAGE_LABELS = {
+            "formulario":   "📝 Carga Formulario",
+            "dashboard":    "📊 Dashboard",
+            "autorizante1": "✅ Autorizante 1",
+            "autorizante2": "🔐 Autorizante 2",
+        }
+
         allowed = PAGE_ACCESS.get(st.session_state.user_profile, [])
         st.markdown("**Navegación**")
         for slug in ["formulario", "dashboard", "autorizante1", "autorizante2"]:
             if slug in allowed:
-                meta = PAGE_META[slug]
-                st.page_link(meta["file"], label=meta["label"])
+                st.markdown(
+                    f'<a href="{PAGE_URLS[slug]}" target="_self">'
+                    f'{PAGE_LABELS[slug]}</a>',
+                    unsafe_allow_html=True
+                )
 
         st.divider()
         if st.button("🚪 Cerrar sesión", use_container_width=True):
