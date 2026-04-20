@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.set_page_config(
     page_title="Sistema de Autorizaciones",
@@ -81,10 +82,12 @@ if not st.session_state.logged_in:
 profile = st.session_state.user_profile
 
 # Definir todas las páginas posibles
-pg_formulario   = st.Page("pages/01_carga_formulario.py", title="📝 Carga Formulario")
-pg_dashboard    = st.Page("pages/02_dashboard.py",        title="📊 Dashboard")
-pg_autorizante1 = st.Page("pages/03_autorizante1.py",     title="✅ Autorizante 1")
-pg_autorizante2 = st.Page("pages/04_autorizante2.py",     title="🔐 Autorizante 2")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+pg_formulario   = st.Page(os.path.join(BASE_DIR, "pages", "01_carga_formulario.py"), title="📝 Carga Formulario")
+pg_dashboard    = st.Page(os.path.join(BASE_DIR, "pages", "02_dashboard.py"),        title="📊 Dashboard")
+pg_autorizante1 = st.Page(os.path.join(BASE_DIR, "pages", "03_autorizante1.py"),     title="✅ Autorizante 1")
+pg_autorizante2 = st.Page(os.path.join(BASE_DIR, "pages", "04_autorizante2.py"),     title="🔐 Autorizante 2")
 
 # Páginas según perfil
 PAGES_BY_PROFILE = {
