@@ -81,10 +81,10 @@ if not st.session_state.logged_in:
 profile = st.session_state.user_profile
 
 # Definir todas las páginas posibles
-pg_formulario   = st.Page("pages/01_carga_formulario.py", title="📝 Carga Formulario",  icon="📝")
-pg_dashboard    = st.Page("pages/02_dashboard.py",        title="📊 Dashboard",          icon="📊")
-pg_autorizante1 = st.Page("pages/03_autorizante1.py",     title="✅ Autorizante 1",       icon="✅")
-pg_autorizante2 = st.Page("pages/04_autorizante2.py",     title="🔐 Autorizante 2",       icon="🔐")
+pg_formulario   = st.Page("pages/01_carga_formulario.py", title="📝 Carga Formulario")
+pg_dashboard    = st.Page("pages/02_dashboard.py",        title="📊 Dashboard")
+pg_autorizante1 = st.Page("pages/03_autorizante1.py",     title="✅ Autorizante 1")
+pg_autorizante2 = st.Page("pages/04_autorizante2.py",     title="🔐 Autorizante 2")
 
 # Páginas según perfil
 PAGES_BY_PROFILE = {
