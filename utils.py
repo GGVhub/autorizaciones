@@ -24,11 +24,10 @@ def require_login():
 
 
 def require_page_access(page_slug: str):
-    """Verifica que el perfil actual tenga acceso a esta página."""
-    require_login()
-    profile = st.session_state.get("user_profile", 0)
-    if page_slug not in PAGE_ACCESS.get(profile, []):
-        st.error(f"🚫 No tienes permiso para acceder a esta página (Perfil {profile}).")
+    """Con st.navigation() el acceso ya está controlado en app.py. 
+    Esta función queda como fallback."""
+    if not st.session_state.get("logged_in"):
+        st.error("🔒 Sesión expirada. Volvé al inicio.")
         st.stop()
 
 
